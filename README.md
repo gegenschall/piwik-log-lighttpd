@@ -2,14 +2,15 @@ piwik-log-lighttpd
 ==================
 
 Slightly modified version of piwik's misc/log-analytics/import_logs.py
-The only thing that has changed is a new regex that can parse the default lighttpd access log format.
+
+The only thing that has changed is a new regex that can understand the default lighttpd access log format.
 
 Requirements
 ------------
 
 * Lighttpd with mod_access enabled
 * `accesslog.filename` directive set to some value, e.g. `/var/log/lighttpd/access.log`
-* Default mod_access log format
+* Default mod_access log file format
 * Piwik, obviously
 
 Usage
@@ -21,5 +22,8 @@ Basically you should refer to the piwik documentation at http://piwik.org/log-an
 
 2. Always add the additional `--log-format-name=lighttpd` switch to the scripts command line (also in the cronjob definition)
 
-
+A valid call to the script could thus be
+```
+/path/to/new/import_logs.py --url=http://example.com/piwik --log-format-name=lighttpd /var/log/lighttpd/access.log
+```
 
